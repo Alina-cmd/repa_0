@@ -32,9 +32,9 @@ namespace project_1
 
         private void button1_Click(object sender, EventArgs e)// masters
         {
-            MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM alinacursach.masters ORDER BY ID_master ASC", this.connection);
-            connection.Open();
-            ds = new DataSet();
+ /*           MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM alinacursach.masters ORDER BY ID_master ASC", this.connection);
+ //           connection.Open();
+ //           ds = new DataSet();
             adapter.Fill(ds, "masters");
             name_table = "masters";
             dataGridView1.DataSource = ds.Tables["masters"];
@@ -46,6 +46,7 @@ namespace project_1
             
             name_column = dataGridView1.Columns[0].Name;
             connection.Close();
+*/
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -127,8 +128,6 @@ namespace project_1
                     form4.Show();
                     break;
                 case "procedures0": 
-                    Form5 form5 = new Form5(for2.exist_, for2);        // конструктор пустой формы
-                    form5.Show();
                     break;
                 case "customers":
                     Form6 form6 = new Form6(for2.exist_, for2);        // конструктор пустой формы
@@ -154,14 +153,6 @@ namespace project_1
                     Form4 form4 = new Form4(for2.exist_, for2,st, val);        // конструктор пустой формы 
                     form4.Show();
                     break;
-                case "procedures0":
-                    for (int i = 0; i < 3; i++)
-                    {
-                        val[i] = dataGridView1.SelectedRows[0].Cells[i + 1].Value.ToString();
-                    }
-                    Form5 form5 = new Form5(for2.exist_, for2,st, val);        // конструктор пустой формы
-                    form5.Show();
-                    break;
                 case "customers":
                     for (int i = 0; i < 3; i++)
                     {
@@ -173,6 +164,22 @@ namespace project_1
             }
         }
 
-     
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM alinacursach.masters ORDER BY ID_master ASC", this.connection);
+            connection.Open();
+            ds = new DataSet();
+            adapter.Fill(ds, "masters");
+            name_table = "masters";
+            dataGridView1.DataSource = ds.Tables["masters"];
+            int _count = dataGridView1.Rows.Count;
+            for (int i = 0; i < _count; i++)
+            {
+                dataGridView1.Rows[i].ReadOnly = true;
+            }
+            
+            name_column = dataGridView1.Columns[0].Name;
+            connection.Close();
+        }
     }
 }
