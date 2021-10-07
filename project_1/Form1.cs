@@ -28,17 +28,5 @@ namespace project_1
             this.Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form3 form3 = new Form3( this);
-            form3.Show();
-            this.Visible = false;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Form8 form8 = new Form8();
-            form8.Show();
-        }
     }
 }
